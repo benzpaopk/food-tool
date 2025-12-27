@@ -1,0 +1,14 @@
+# Feature-based modules will be organized here
+# Example structure:
+# features/
+#   ingredients/
+#     components/
+#     types/
+#     hooks/
+#     services/
+#   recipes/
+#     components/
+#     types/
+#     hooks/
+#     services/
+
