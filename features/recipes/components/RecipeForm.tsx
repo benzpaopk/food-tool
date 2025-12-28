@@ -18,7 +18,7 @@ import type { Ingredient, Unit, RecipeItem, Recipe } from "@/types";
 import { getUnitMetadata } from "@/types";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import { useToast } from "@/components/ui/toast";
+import { useToast } from "@/hooks/use-toast";
 import {
   Form,
   FormControl,
