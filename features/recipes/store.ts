@@ -118,7 +118,7 @@ export const useRecipeStore = create<RecipeState>()(
 
       removeRecipe: (id) => {
         set((state) => ({
-          recipes: state.recipes.filter((recipe) => recipe.id !== id),
+          recipes: state.recipes.filter((recipe: Recipe) => recipe.id !== id),
         }));
       },
 
@@ -146,7 +146,7 @@ export const useRecipeStore = create<RecipeState>()(
             : 0;
 
           return {
-            recipes: state.recipes.map((r) =>
+            recipes: state.recipes.map((r: Recipe) =>
               r.id === id
                 ? {
                     ...r,
@@ -163,7 +163,7 @@ export const useRecipeStore = create<RecipeState>()(
       },
 
       getRecipe: (id) => {
-        const recipe = get().recipes.find((r) => r.id === id);
+        const recipe = get().recipes.find((r: Recipe) => r.id === id);
         return recipe ? restoreRecipeDates(recipe) : undefined;
       },
 
@@ -176,7 +176,7 @@ export const useRecipeStore = create<RecipeState>()(
       storage: createJSONStorage(() => recipeStorage),
       // Convert Date objects to ISO strings when storing
       partialize: (state) => ({
-        recipes: state.recipes.map((recipe) => ({
+        recipes: state.recipes.map((recipe: Recipe) => ({
           ...recipe,
           createdAt: recipe.createdAt.toISOString(),
           updatedAt: recipe.updatedAt.toISOString(),
