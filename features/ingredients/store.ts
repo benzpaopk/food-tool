@@ -99,7 +99,7 @@ export const useIngredientStore = create<IngredientState>()(
 
       updateIngredient: (id, data) => {
         set((state) => ({
-          ingredients: state.ingredients.map((ing) =>
+          ingredients: state.ingredients.map((ing: Ingredient) =>
             ing.id === id
               ? {
                   ...ing,
@@ -112,7 +112,7 @@ export const useIngredientStore = create<IngredientState>()(
       },
 
       getIngredient: (id) => {
-        const ingredient = get().ingredients.find((ing) => ing.id === id);
+        const ingredient = get().ingredients.find((ing: Ingredient) => ing.id === id);
         return ingredient ? restoreIngredientDates(ingredient) : undefined;
       },
 
@@ -125,7 +125,7 @@ export const useIngredientStore = create<IngredientState>()(
       storage: createJSONStorage(() => ingredientStorage),
       // Convert Date objects to ISO strings when storing
       partialize: (state) => ({
-        ingredients: state.ingredients.map((ing) => ({
+        ingredients: state.ingredients.map((ing: Ingredient) => ({
           ...ing,
           createdAt: ing.createdAt.toISOString(),
           updatedAt: ing.updatedAt.toISOString(),
