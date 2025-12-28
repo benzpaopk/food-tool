@@ -93,7 +93,7 @@ export const useIngredientStore = create<IngredientState>()(
 
       removeIngredient: (id) => {
         set((state) => ({
-          ingredients: state.ingredients.filter((ing) => ing.id !== id),
+          ingredients: state.ingredients.filter((ing: Ingredient) => ing.id !== id),
         }));
       },
 
