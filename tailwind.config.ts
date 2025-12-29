@@ -11,7 +11,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "hsl(var(--background))",
+        background: "#f8fafc", // slate-50 - สีเทาพื้นหลัง
         foreground: "hsl(var(--foreground))",
         card: {
           DEFAULT: "hsl(var(--card))",
@@ -22,7 +22,9 @@ const config: Config = {
           foreground: "hsl(var(--popover-foreground))",
         },
         primary: {
-          DEFAULT: "hsl(var(--primary))",
+          DEFAULT: "#22c55e", // green-500 - สีเขียวหลักตามดีไซน์
+          dark: "#15803d",    // green-700 สำหรับปุ่ม hover
+          light: "#dcfce7",   // green-100 สำหรับพื้นหลังอ่อนๆ
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
@@ -56,6 +58,10 @@ const config: Config = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      fontFamily: {
+        // แนะนำให้ใช้ฟอนต์ไทยสวยๆ เช่น Prompt หรือ IBM Plex Sans Thai
+        sans: ['Prompt', 'sans-serif'],
       },
     },
   },
