@@ -1,18 +1,17 @@
 import type { Metadata } from "next";
-import { Prompt } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import { AppSidebar } from "@/components/layout/AppSidebar";
 import { Toaster } from "@/components/ui/toaster";
 
-const prompt = Prompt({ 
-  subsets: ["latin", "thai"],
+const inter = Inter({ 
+  subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-prompt",
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
-  title: "Food Cost Calculator",
-  description: "Calculate food costs for recipes and ingredients",
+  title: "FoodCostEasy - คำนวณต้นทุนอาหาร ง่ายจนงง",
+  description: "เครื่องมือคำนวณต้นทุนอาหารสำหรับร้านอาหาร ใช้งานง่าย ไม่ต้องจบบัญชีก็ทำได้",
 };
 
 export default function RootLayout({
@@ -21,14 +20,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={prompt.className}>
-        <div className="flex h-screen overflow-hidden">
-          <AppSidebar />
-          <main className="flex-1 overflow-y-auto md:ml-72">
-            <div className="container mx-auto p-6 md:p-10">{children}</div>
-          </main>
-        </div>
+    <html lang="th">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+      </head>
+      <body className={inter.variable}>
+        {children}
         <Toaster />
       </body>
     </html>

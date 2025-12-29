@@ -20,17 +20,17 @@ import { useState } from "react";
 
 const navigation = [
   {
-    name: "Dashboard",
+    name: "หน้าหลัก",
     href: "/",
     icon: LayoutDashboard,
   },
   {
-    name: "Ingredients",
+    name: "วัตถุดิบ",
     href: "/ingredients",
     icon: Utensils,
   },
   {
-    name: "Recipes",
+    name: "สูตรอาหาร",
     href: "/recipes",
     icon: ChefHat,
   },
@@ -70,7 +70,7 @@ export function AppSidebar() {
       <aside className="hidden md:flex md:w-72 md:flex-col md:fixed md:inset-y-0 md:border-r">
         <div className="flex flex-col flex-grow pt-6 pb-4 overflow-y-auto bg-background">
           <div className="flex items-center flex-shrink-0 px-6 mb-8">
-            <h1 className="text-2xl font-bold">Food Cost Calculator</h1>
+            <h1 className="text-2xl font-bold">FoodCostEasy</h1>
           </div>
           <nav className="flex-1 px-4 space-y-2">
             <NavLinks />
@@ -81,7 +81,7 @@ export function AppSidebar() {
       {/* Mobile Header */}
       <header className="md:hidden sticky top-0 z-50 w-full border-b bg-background">
         <div className="flex h-20 items-center justify-between px-4">
-          <h1 className="text-xl font-bold">Food Cost Calculator</h1>
+          <h1 className="text-xl font-bold">FoodCostEasy</h1>
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" aria-label="Open Menu">

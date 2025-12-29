@@ -11,7 +11,26 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#f8fafc", // slate-50 - สีเทาพื้นหลัง
+        primary: {
+          DEFAULT: "#34A853",
+          dark: "#2E8B46",
+          light: "#dcfce7",
+        },
+        "background-light": "#f8f9fa",
+        "background-dark": "#101214",
+        "surface-light": "#ffffff",
+        "surface-dark": "#1c1e21",
+        "text-main": "#212529",
+        "text-secondary": "#6c757d",
+        "text-muted": "#525252",
+        "border-color": "#e2e8f0",
+        "border-light": "#e9ecef",
+        "border-dark": "#2d3035",
+        "primary-hover": "#0fd60f",
+        "accent-good": "#34A853",
+        "accent-warning": "#FBBC04",
+        "accent-danger": "#EA4335",
+        background: "#f8faf8",
         foreground: "hsl(var(--foreground))",
         card: {
           DEFAULT: "hsl(var(--card))",
@@ -20,12 +39,6 @@ const config: Config = {
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
-        },
-        primary: {
-          DEFAULT: "#22c55e", // green-500 - สีเขียวหลักตามดีไซน์
-          dark: "#15803d",    // green-700 สำหรับปุ่ม hover
-          light: "#dcfce7",   // green-100 สำหรับพื้นหลังอ่อนๆ
-          foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -55,13 +68,20 @@ const config: Config = {
         },
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        DEFAULT: "0.5rem",
+        lg: "1rem",
+        xl: "1.5rem",
+        "2xl": "2rem",
+        full: "9999px",
       },
       fontFamily: {
-        // แนะนำให้ใช้ฟอนต์ไทยสวยๆ เช่น Prompt หรือ IBM Plex Sans Thai
-        sans: ['Prompt', 'sans-serif'],
+        display: ["Outfit", "Noto Sans Thai", "sans-serif"],
+        body: ["Noto Sans Thai", "sans-serif"],
+        sans: ['Noto Sans Thai', 'Google Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+      },
+      container: {
+        center: true,
+        padding: '1.5rem',
       },
     },
   },
