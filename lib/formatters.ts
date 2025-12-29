@@ -47,7 +47,8 @@ export function formatCurrency(
 
   // Format with locale-specific number formatting
   const formatter = new Intl.NumberFormat("th-TH", {
-    style: compact ? "compact" : "decimal",
+    style: "decimal",
+    notation: compact ? "compact" : "standard", 
     minimumFractionDigits: decimals,
     maximumFractionDigits: decimals,
   });
