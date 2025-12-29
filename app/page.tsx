@@ -52,12 +52,12 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-10">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold">Dashboard</h1>
-        <p className="text-muted-foreground mt-2">
-          Overview of your food cost management
+        <h1 className="text-4xl font-bold mb-3">Dashboard</h1>
+        <p className="text-lg text-muted-foreground">
+          Here's an overview of your food cost management
         </p>
       </div>
 
@@ -91,9 +91,9 @@ export default function DashboardPage() {
 
       {/* Empty State */}
       {totalIngredients === 0 && totalRecipes === 0 && (
-        <div className="rounded-lg border p-12 text-center">
-          <h2 className="text-2xl font-semibold mb-2">Welcome to Food Cost Calculator</h2>
-          <p className="text-muted-foreground mb-6">
+        <div className="rounded-lg border-2 border-primary/20 p-12 text-center bg-muted/30">
+          <h2 className="text-3xl font-bold mb-4">Welcome to Food Cost Calculator</h2>
+          <p className="text-lg text-muted-foreground mb-8">
             Get started by adding your first ingredient or creating a recipe
           </p>
           <div className="flex gap-4 justify-center">

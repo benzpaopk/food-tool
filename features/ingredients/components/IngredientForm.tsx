@@ -181,16 +181,17 @@ export function IngredientForm({
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Ingredient Name</FormLabel>
+              <FormLabel className="text-base font-semibold">What is the name of this ingredient?</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="e.g., Chicken Breast"
+                  placeholder="Type the ingredient name here, for example: Chicken Breast"
                   {...field}
                   disabled={isLoading}
+                  aria-label="Ingredient name"
                 />
               </FormControl>
-              <FormDescription>
-                Enter the name of the ingredient
+              <FormDescription className="text-base">
+                Give your ingredient a name that you will remember
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -203,15 +204,15 @@ export function IngredientForm({
           name="category"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Category</FormLabel>
+              <FormLabel className="text-base font-semibold">What type of ingredient is this?</FormLabel>
               <Select
                 onValueChange={field.onChange}
                 defaultValue={field.value}
                 disabled={isLoading}
               >
                 <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select a category" />
+                  <SelectTrigger aria-label="Select ingredient category">
+                    <SelectValue placeholder="Choose a category, for example: Protein, Vegetable, etc." />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
@@ -222,8 +223,8 @@ export function IngredientForm({
                   ))}
                 </SelectContent>
               </Select>
-              <FormDescription>
-                Categorize the ingredient for organization
+              <FormDescription className="text-base">
+                Choose what type of ingredient this is (like Protein, Vegetable, Spice, etc.)
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -238,15 +239,15 @@ export function IngredientForm({
             name="purchaseUnit"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Purchase Unit</FormLabel>
+                <FormLabel className="text-base font-semibold">How is this ingredient sold? (grams, kilograms, etc.)</FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
                   disabled={isLoading}
                 >
                   <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select unit" />
+                    <SelectTrigger aria-label="Select purchase unit">
+                      <SelectValue placeholder="Choose the unit, for example: Kilogram, Gram, Liter" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
@@ -257,8 +258,8 @@ export function IngredientForm({
                     ))}
                   </SelectContent>
                 </Select>
-                <FormDescription>
-                  Unit in which ingredient is purchased
+                <FormDescription className="text-base">
+                  Choose how this ingredient is sold when you buy it (like kilograms, grams, liters, etc.)
                 </FormDescription>
                 <FormMessage />
               </FormItem>
@@ -271,12 +272,12 @@ export function IngredientForm({
             name="purchaseQuantity"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Purchase Quantity</FormLabel>
+                <FormLabel className="text-base font-semibold">How much did you buy? (Optional)</FormLabel>
                 <FormControl>
                   <Input
                     type="number"
                     step="any"
-                    placeholder="e.g., 1"
+                    placeholder="Enter the amount you bought, for example: 1"
                     {...field}
                     onChange={(e) => {
                       const value = e.target.value;
@@ -284,10 +285,11 @@ export function IngredientForm({
                     }}
                     value={field.value ?? ""}
                     disabled={isLoading}
+                    aria-label="Purchase quantity"
                   />
                 </FormControl>
-                <FormDescription>
-                  Quantity purchased (for reference)
+                <FormDescription className="text-base">
+                  Enter how much you bought (this is just for your reference - you can skip this)
                 </FormDescription>
                 <FormMessage />
               </FormItem>
@@ -301,12 +303,12 @@ export function IngredientForm({
           name="pricePerUnit"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Price Per Unit (THB)</FormLabel>
+              <FormLabel className="text-base font-semibold">How much does this ingredient cost? (Thai Baht)</FormLabel>
               <FormControl>
                 <Input
                   type="number"
                   step="0.01"
-                  placeholder="e.g., 200.00"
+                  placeholder="Enter the price, for example: 200.00"
                   {...field}
                   onChange={(e) => {
                     const value = e.target.value;
@@ -314,10 +316,11 @@ export function IngredientForm({
                   }}
                   value={field.value ?? ""}
                   disabled={isLoading}
+                  aria-label="Price per unit in Thai Baht"
                 />
               </FormControl>
-              <FormDescription>
-                Purchase price per unit in Thai Baht
+              <FormDescription className="text-base">
+                Enter how much you paid for this ingredient in Thai Baht (for example: 200.00)
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -330,14 +333,14 @@ export function IngredientForm({
           name="yieldPercentage"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Yield Percentage (%)</FormLabel>
+              <FormLabel className="text-base font-semibold">How much can you actually use? (Percentage)</FormLabel>
               <FormControl>
                 <Input
                   type="number"
                   step="0.1"
                   min="0"
                   max="100"
-                  placeholder="e.g., 80"
+                  placeholder="Enter a number between 0 and 100, for example: 80"
                   {...field}
                   onChange={(e) => {
                     const value = e.target.value;
@@ -345,11 +348,13 @@ export function IngredientForm({
                   }}
                   value={field.value ?? ""}
                   disabled={isLoading}
+                  aria-label="Yield percentage"
                 />
               </FormControl>
-              <FormDescription>
-                Percentage of usable product after cleaning/prep (0-100%).
-                Example: 80% means 20% is lost during preparation.
+              <FormDescription className="text-base">
+                After cleaning or preparing this ingredient, how much can you actually use? Enter a number from 0 to 100. 
+                For example: 80 means you can use 80% of what you bought (20% is lost during cleaning or preparation).
+                If you're not sure, leave it at 100.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -362,17 +367,18 @@ export function IngredientForm({
           name="notes"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Notes (Optional)</FormLabel>
+              <FormLabel className="text-base font-semibold">Additional Notes (Optional - You can skip this)</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Additional notes about this ingredient..."
+                  placeholder="Write any additional notes about this ingredient here, for example: where you buy it, storage tips, etc."
                   className="resize-none"
                   {...field}
                   disabled={isLoading}
+                  aria-label="Additional notes about the ingredient"
                 />
               </FormControl>
-              <FormDescription>
-                Optional notes or additional information
+              <FormDescription className="text-base">
+                You can add any extra notes or reminders about this ingredient (this is optional)
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -380,19 +386,21 @@ export function IngredientForm({
         />
 
         {/* Form Actions */}
-        <div className="flex justify-end gap-3">
+        <div className="flex flex-col sm:flex-row justify-end gap-4 pt-6 border-t-2">
           {onCancel && (
             <Button
               type="button"
               variant="outline"
+              size="lg"
               onClick={onCancel}
               disabled={isLoading}
+              className="w-full sm:w-auto"
             >
-              Cancel
+              <span>Cancel</span>
             </Button>
           )}
-          <Button type="submit" disabled={isLoading}>
-            {isLoading ? "Saving..." : finalSubmitLabel}
+          <Button type="submit" size="lg" disabled={isLoading} className="w-full sm:w-auto">
+            {isLoading ? "Saving Your Ingredient..." : finalSubmitLabel}
           </Button>
         </div>
       </form>

@@ -13,23 +13,23 @@ import Link from "next/link";
 
 export function QuickActions() {
   return (
-    <Card>
+    <Card className="border-2">
       <CardHeader>
-        <CardTitle>Quick Actions</CardTitle>
-        <CardDescription>Get started quickly with common tasks</CardDescription>
+        <CardTitle className="text-2xl font-bold">Quick Actions</CardTitle>
+        <CardDescription className="text-base">Get started quickly with common tasks</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Button asChild size="lg" className="w-full">
             <Link href="/ingredients">
-              <Utensils className="mr-2 h-5 w-5" />
-              Add New Ingredient
+              <Utensils className="mr-2 h-5 w-5" aria-hidden="true" />
+              <span>Add New Ingredient</span>
             </Link>
           </Button>
           <Button asChild size="lg" variant="outline" className="w-full">
             <Link href="/recipes/new">
-              <ChefHat className="mr-2 h-5 w-5" />
-              Create Recipe
+              <ChefHat className="mr-2 h-5 w-5" aria-hidden="true" />
+              <span>Create Recipe</span>
             </Link>
           </Button>
         </div>

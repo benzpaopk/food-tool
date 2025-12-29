@@ -219,8 +219,8 @@ export function RecipeForm({
       if (validItems.length === 0) {
         console.error("No valid ingredients found");
         toast({
-          title: "Validation Error",
-          description: "Please add at least one ingredient to the recipe.",
+          title: "Missing Information",
+          description: "Please add at least one ingredient to your recipe before saving.",
           variant: "destructive",
         });
         return;
@@ -257,8 +257,8 @@ export function RecipeForm({
 
         // Show success toast
         toast({
-          title: "Recipe updated",
-          description: `${data.name} has been updated successfully.`,
+          title: "Recipe Saved Successfully!",
+          description: `Your recipe "${data.name}" has been saved and updated.`,
         });
 
         // Redirect to recipes list
@@ -290,8 +290,8 @@ export function RecipeForm({
 
         // Show success toast
         toast({
-          title: "Recipe created",
-          description: `${data.name} has been saved successfully.`,
+          title: "Recipe Created Successfully!",
+          description: `Your recipe "${data.name}" has been saved. You can find it in your recipes list.`,
         });
 
         // Redirect to recipes list
@@ -328,10 +328,10 @@ export function RecipeForm({
       });
       console.error("Form errors:", form.formState.errors);
       toast({
-        title: "Error",
+        title: "Something Went Wrong",
         description: isEditMode
-          ? "Failed to update recipe. Please try again."
-          : "Failed to save recipe. Please try again.",
+          ? "We couldn't save your changes. Please check your information and try again."
+          : "We couldn't save your recipe. Please check your information and try again.",
         variant: "destructive",
       });
     }
@@ -388,11 +388,11 @@ export function RecipeForm({
       ? errorMessages.join(". ")
       : "Please check the form for errors.";
     
-    toast({
-      title: "Validation Error",
-      description: errorMessage,
-      variant: "destructive",
-    });
+      toast({
+        title: "Please Check Your Information",
+        description: errorMessage,
+        variant: "destructive",
+      });
   };
 
   return (
@@ -408,16 +408,17 @@ export function RecipeForm({
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Recipe Name</FormLabel>
+              <FormLabel className="text-base font-semibold">What is the name of this recipe?</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="e.g., Pad Thai"
+                  placeholder="Type the recipe name here, for example: Pad Thai"
                   {...field}
                   disabled={isLoading}
+                  aria-label="Recipe name"
                 />
               </FormControl>
-              <FormDescription>
-                Enter the name of the recipe
+              <FormDescription className="text-base">
+                Give your recipe a name that you will remember
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -430,17 +431,18 @@ export function RecipeForm({
           name="description"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Description (Optional)</FormLabel>
+              <FormLabel className="text-base font-semibold">Description (Optional - You can skip this)</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Brief description of the recipe..."
+                  placeholder="Write a short description about this recipe, for example: A popular Thai noodle dish..."
                   className="resize-none"
                   {...field}
                   disabled={isLoading}
+                  aria-label="Recipe description"
                 />
               </FormControl>
-              <FormDescription>
-                Optional description of the recipe
+              <FormDescription className="text-base">
+                You can add a short note about this recipe if you want (this is optional)
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -452,14 +454,14 @@ export function RecipeForm({
           control={form.control}
           name="servings"
           render={({ field }) => (
-            <FormItem className="w-full md:w-48">
-              <FormLabel>Number of Servings</FormLabel>
+            <FormItem className="w-full md:w-64">
+              <FormLabel className="text-base font-semibold">How many people can eat from this recipe?</FormLabel>
               <FormControl>
                 <Input
                   type="number"
                   min="1"
                   step="1"
-                  placeholder="e.g., 4"
+                  placeholder="Enter a number, for example: 4"
                   {...field}
                   onChange={(e) => {
                     const value = e.target.value;
@@ -467,10 +469,11 @@ export function RecipeForm({
                   }}
                   value={field.value ?? ""}
                   disabled={isLoading}
+                  aria-label="Number of servings"
                 />
               </FormControl>
-              <FormDescription>
-                How many servings does this recipe make?
+              <FormDescription className="text-base">
+                How many people can eat from this recipe? Enter a number like 2, 4, or 6
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -478,23 +481,24 @@ export function RecipeForm({
         />
 
         {/* Ingredients Section */}
-        <div className="space-y-4">
-          <div className="flex items-center justify-between">
+        <div className="space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <h3 className="text-lg font-semibold">Ingredients</h3>
-              <p className="text-sm text-muted-foreground">
-                Add ingredients to build your recipe
+              <h3 className="text-xl font-bold mb-2">What ingredients do you need?</h3>
+              <p className="text-base text-muted-foreground">
+                Add each ingredient you need for this recipe
               </p>
             </div>
             <Button
               type="button"
               variant="outline"
-              size="sm"
+              size="lg"
               onClick={addIngredientRow}
               disabled={isLoading}
+              className="w-full sm:w-auto"
             >
-              <Plus className="mr-2 h-4 w-4" />
-              Add Ingredient
+              <Plus className="mr-2 h-5 w-5" aria-hidden="true" />
+              <span>Add Another Ingredient</span>
             </Button>
           </div>
 
@@ -513,19 +517,21 @@ export function RecipeForm({
                   className="rounded-lg border p-4 space-y-4"
                 >
                   <div className="flex items-start justify-between">
-                    <h4 className="text-sm font-medium">
+                    <h4 className="text-base font-semibold">
                       Ingredient {index + 1}
                     </h4>
                     {fields.length > 1 && (
                       <Button
                         type="button"
                         variant="ghost"
-                        size="sm"
+                        size="lg"
                         onClick={() => remove(index)}
                         disabled={isLoading}
                         className="text-destructive hover:text-destructive"
+                        aria-label={`Remove ingredient ${index + 1}`}
                       >
-                        <Trash2 className="h-4 w-4" />
+                        <Trash2 className="h-5 w-5 mr-2" aria-hidden="true" />
+                        <span>Remove</span>
                       </Button>
                     )}
                   </div>
@@ -537,7 +543,7 @@ export function RecipeForm({
                       name={`items.${index}.ingredientId`}
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Ingredient</FormLabel>
+                          <FormLabel className="text-base font-semibold">Which ingredient?</FormLabel>
                           <Select
                             onValueChange={(value) => {
                               field.onChange(value);
@@ -555,14 +561,14 @@ export function RecipeForm({
                             disabled={isLoading}
                           >
                             <FormControl>
-                              <SelectTrigger>
-                                <SelectValue placeholder="Select ingredient" />
+                              <SelectTrigger aria-label={`Select ingredient for ingredient ${index + 1}`}>
+                                <SelectValue placeholder="Choose an ingredient from the list" />
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent>
                               {ingredients.length === 0 ? (
-                                <div className="px-2 py-1.5 text-sm text-muted-foreground">
-                                  No ingredients available. Add ingredients first.
+                                <div className="px-4 py-3 text-base text-muted-foreground">
+                                  You need to add ingredients first. Go to the Ingredients page to add them.
                                 </div>
                               ) : (
                                 ingredients.map((ing) => (
@@ -573,6 +579,9 @@ export function RecipeForm({
                               )}
                             </SelectContent>
                           </Select>
+                          <FormDescription className="text-base">
+                            Choose which ingredient you need from your list
+                          </FormDescription>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -584,13 +593,13 @@ export function RecipeForm({
                       name={`items.${index}.usedQuantity`}
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Quantity</FormLabel>
+                          <FormLabel className="text-base font-semibold">How much do you need?</FormLabel>
                           <FormControl>
                             <Input
                               type="number"
                               step="any"
                               min="0"
-                              placeholder="e.g., 500"
+                              placeholder="Enter the amount, for example: 500"
                               {...field}
                               onChange={(e) => {
                                 const value = e.target.value;
@@ -600,8 +609,12 @@ export function RecipeForm({
                               }}
                               value={field.value ?? ""}
                               disabled={isLoading}
+                              aria-label={`Quantity for ingredient ${index + 1}`}
                             />
                           </FormControl>
+                          <FormDescription className="text-base">
+                            Enter how much of this ingredient you need (just the number)
+                          </FormDescription>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -613,15 +626,15 @@ export function RecipeForm({
                       name={`items.${index}.usedUnit`}
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Unit</FormLabel>
+                          <FormLabel className="text-base font-semibold">What unit? (grams, kilograms, etc.)</FormLabel>
                           <Select
                             onValueChange={field.onChange}
                             value={field.value}
                             disabled={isLoading || !ingredientId}
                           >
                             <FormControl>
-                              <SelectTrigger>
-                                <SelectValue placeholder="Select unit" />
+                              <SelectTrigger aria-label={`Select unit for ingredient ${index + 1}`}>
+                                <SelectValue placeholder="Choose the unit (grams, kilograms, etc.)" />
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent>
@@ -637,6 +650,9 @@ export function RecipeForm({
                               })}
                             </SelectContent>
                           </Select>
+                          <FormDescription className="text-base">
+                            Choose the unit of measurement (grams, kilograms, liters, etc.)
+                          </FormDescription>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -647,19 +663,21 @@ export function RecipeForm({
                   {selectedIngredient &&
                     form.watch(`items.${index}.usedQuantity`) &&
                     form.watch(`items.${index}.usedQuantity`)! > 0 && (
-                      <div className="text-sm text-muted-foreground">
-                        Item Cost:{" "}
-                        {formatCurrency(
-                          calculateIngredientCost({
-                            pricePerUnit: selectedIngredient.pricePerUnit,
-                            purchaseQuantity: selectedIngredient.purchaseQuantity,
-                            purchaseUnit: selectedIngredient.purchaseUnit,
-                            yieldPercentage: selectedIngredient.yieldPercentage,
-                            usedQuantity:
-                              form.watch(`items.${index}.usedQuantity`) || 0,
-                            usedUnit: form.watch(`items.${index}.usedUnit`),
-                          })
-                        )}
+                      <div className="text-base font-semibold text-primary bg-primary/10 p-3 rounded-md">
+                        Cost for this ingredient:{" "}
+                        <span className="text-lg">
+                          {formatCurrency(
+                            calculateIngredientCost({
+                              pricePerUnit: selectedIngredient.pricePerUnit,
+                              purchaseQuantity: selectedIngredient.purchaseQuantity,
+                              purchaseUnit: selectedIngredient.purchaseUnit,
+                              yieldPercentage: selectedIngredient.yieldPercentage,
+                              usedQuantity:
+                                form.watch(`items.${index}.usedQuantity`) || 0,
+                              usedUnit: form.watch(`items.${index}.usedUnit`),
+                            })
+                          )}
+                        </span>
                       </div>
                     )}
                 </div>
@@ -669,31 +687,33 @@ export function RecipeForm({
         </div>
 
         {/* Cost Summary Section */}
-        <div className="rounded-lg border bg-muted/50 p-6 space-y-4">
-          <h3 className="text-lg font-semibold">Cost Summary</h3>
+        <div className="rounded-lg border-2 border-primary/20 bg-muted/50 p-8 space-y-6">
+          <h3 className="text-2xl font-bold">Cost Summary - How Much Does This Recipe Cost?</h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <p className="text-sm text-muted-foreground">Total Cost</p>
-              <p className="text-2xl font-bold">{formatCurrency(totalCost)}</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-background p-4 rounded-lg border-2">
+              <p className="text-base font-semibold text-muted-foreground mb-2">Total Cost for All Ingredients</p>
+              <p className="text-3xl font-bold">{formatCurrency(totalCost)}</p>
+              <p className="text-sm text-muted-foreground mt-2">This is how much all ingredients cost together</p>
             </div>
             
-            <div>
-              <p className="text-sm text-muted-foreground">Cost per Serving</p>
-              <p className="text-2xl font-bold">
+            <div className="bg-background p-4 rounded-lg border-2">
+              <p className="text-base font-semibold text-muted-foreground mb-2">Cost Per Person</p>
+              <p className="text-3xl font-bold">
                 {formatCurrency(costPerServing)}
               </p>
+              <p className="text-sm text-muted-foreground mt-2">This is how much each serving costs</p>
             </div>
             
-            <div>
-              <p className="text-sm text-muted-foreground">
-                Suggested Selling Price
+            <div className="bg-primary/10 p-4 rounded-lg border-2 border-primary/30">
+              <p className="text-base font-semibold text-muted-foreground mb-2">
+                Suggested Price to Sell
               </p>
-              <p className="text-2xl font-bold text-primary">
+              <p className="text-3xl font-bold text-primary">
                 {formatCurrency(suggestedSellingPrice)}
               </p>
-              <p className="text-xs text-muted-foreground mt-1">
-                (Based on {DEFAULT_FOOD_COST_PERCENTAGE}% food cost)
+              <p className="text-sm text-muted-foreground mt-2">
+                Suggested price based on {DEFAULT_FOOD_COST_PERCENTAGE}% food cost (you can change this below)
               </p>
             </div>
           </div>
@@ -704,13 +724,13 @@ export function RecipeForm({
             name="salePrice"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Sale Price (THB)</FormLabel>
+                <FormLabel className="text-base font-semibold">How much will you sell this recipe for? (Optional)</FormLabel>
                 <FormControl>
                   <Input
                     type="number"
                     step="0.01"
                     min="0"
-                    placeholder="Enter selling price"
+                    placeholder="Enter the price in Thai Baht, for example: 150.00"
                     {...field}
                     onChange={(e) => {
                       const value = e.target.value;
@@ -720,10 +740,11 @@ export function RecipeForm({
                     }}
                     value={field.value ?? ""}
                     disabled={isLoading}
+                    aria-label="Selling price in Thai Baht"
                   />
                 </FormControl>
-                <FormDescription>
-                  Optional: Set the selling price to calculate food cost percentage
+                <FormDescription className="text-base">
+                  If you plan to sell this recipe, enter the price here. This is optional - you can skip it if you don't need it.
                 </FormDescription>
                 <FormMessage />
               </FormItem>
@@ -733,12 +754,15 @@ export function RecipeForm({
           {/* Food Cost Percentage Display */}
           {form.watch("salePrice") &&
             form.watch("salePrice")! > 0 && (
-              <div className="pt-2 border-t">
-                <p className="text-sm text-muted-foreground">
+              <div className="pt-4 border-t-2 border-primary/20 bg-primary/5 p-4 rounded-lg">
+                <p className="text-base font-semibold text-muted-foreground mb-2">
                   Food Cost Percentage
                 </p>
-                <p className="text-xl font-semibold">
+                <p className="text-3xl font-bold text-primary">
                   {((totalCost / form.watch("salePrice")!) * 100).toFixed(1)}%
+                </p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  This shows what percentage of your selling price goes to ingredients. Lower is usually better for profit.
                 </p>
               </div>
             )}
@@ -750,17 +774,18 @@ export function RecipeForm({
           name="notes"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Notes (Optional)</FormLabel>
+              <FormLabel className="text-base font-semibold">Additional Notes (Optional - You can skip this)</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Additional notes about this recipe..."
+                  placeholder="Write any additional notes about this recipe here, for example: cooking tips, special instructions, etc."
                   className="resize-none"
                   {...field}
                   disabled={isLoading}
+                  aria-label="Additional notes about the recipe"
                 />
               </FormControl>
-              <FormDescription>
-                Optional notes or additional information
+              <FormDescription className="text-base">
+                You can add any extra notes or reminders about this recipe (this is optional)
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -768,19 +793,21 @@ export function RecipeForm({
         />
 
         {/* Form Actions */}
-        <div className="flex justify-end gap-3">
+        <div className="flex flex-col sm:flex-row justify-end gap-4 pt-6 border-t-2">
           {onCancel && (
             <Button
               type="button"
               variant="outline"
+              size="lg"
               onClick={onCancel}
               disabled={isLoading}
+              className="w-full sm:w-auto"
             >
-              Cancel
+              <span>Cancel</span>
             </Button>
           )}
-          <Button type="submit" disabled={isLoading}>
-            {isLoading ? "Saving..." : finalSubmitLabel}
+          <Button type="submit" size="lg" disabled={isLoading} className="w-full sm:w-auto">
+            {isLoading ? "Saving Your Recipe..." : finalSubmitLabel}
           </Button>
         </div>
       </form>

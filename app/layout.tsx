@@ -21,8 +21,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="flex h-screen overflow-hidden">
           <AppSidebar />
-          <main className="flex-1 overflow-y-auto md:ml-64">
-            <div className="container mx-auto p-4 md:p-8">{children}</div>
+          <main className="flex-1 overflow-y-auto md:ml-72">
+            <div className="container mx-auto p-6 md:p-10">{children}</div>
           </main>
         </div>
         <Toaster />
