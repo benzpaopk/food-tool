@@ -196,7 +196,7 @@ export default function RecipeSummaryPage() {
             สรุปต้นทุนอาหาร
           </h1>
           <p className="text-base sm:text-lg text-gray-600">
-            ผลลัพธ์สำหรับ: "{recipe.name}"
+            ผลลัพธ์สำหรับ: &quot;{recipe.name}&quot;
           </p>
         </div>
 
@@ -257,7 +257,7 @@ export default function RecipeSummaryPage() {
             <h2 className="text-lg sm:text-xl font-bold text-gray-900">สุขภาพกำไร (Profit Health)</h2>
           </div>
           <p className="text-sm sm:text-base text-gray-600 mb-6">
-            อัตรากำไรของคุณอยู่ที่ {profitMargin.toFixed(0)}% ซึ่งถือว่าอยู่ในเกณฑ์ "{profitHealth.label}" สำหรับร้านอาหารประเภทจานเดียว
+            อัตรากำไรของคุณอยู่ที่ {profitMargin.toFixed(0)}% ซึ่งถือว่าอยู่ในเกณฑ์ &quot;{profitHealth.label}&quot; สำหรับร้านอาหารประเภทจานเดียว
           </p>
 
           {/* Progress Bar */}

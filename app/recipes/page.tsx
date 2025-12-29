@@ -337,7 +337,7 @@ export default function RecipesPage() {
                                   <AlertDialogHeader>
                                     <AlertDialogTitle>ลบสูตรอาหาร</AlertDialogTitle>
                                     <AlertDialogDescription>
-                                      คุณแน่ใจหรือไม่ว่าต้องการลบ "{recipe.name}"? การกระทำนี้ไม่สามารถยกเลิกได้
+                                      คุณแน่ใจหรือไม่ว่าต้องการลบ &quot;{recipe.name}&quot;? การกระทำนี้ไม่สามารถยกเลิกได้
                                     </AlertDialogDescription>
                                   </AlertDialogHeader>
                                   <AlertDialogFooter>

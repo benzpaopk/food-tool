@@ -7,6 +7,7 @@
  */
 
 import Link from "next/link";
+import Image from "next/image";
 
 export default function LandingPage() {
   return (
@@ -279,13 +280,15 @@ export default function LandingPage() {
                 ))}
               </div>
               <p className="text-gray-700 dark:text-gray-300 text-lg font-medium leading-relaxed mb-8">
-                "ป้าใช้คอมไม่ค่อยเป็น แต่เว็บนี้ใช้ง่ายมาก แค่กดๆ ก็รู้ว่าต้องขายเท่าไหร่ถึงจะไม่เจ๊ง ดีใจมากที่เจอเว็บนี้"
+                &quot;ป้าใช้คอมไม่ค่อยเป็น แต่เว็บนี้ใช้ง่ายมาก แค่กดๆ ก็รู้ว่าต้องขายเท่าไหร่ถึงจะไม่เจ๊ง ดีใจมากที่เจอเว็บนี้&quot;
               </p>
               <div className="flex items-center gap-4">
-                <img
+                <Image
                   alt="Portrait of an elderly Thai woman smiling"
                   className="w-12 h-12 rounded-full object-cover border-2 border-white dark:border-gray-700 shadow-sm"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpWXpvAW7p8d5bkK9KtFyNz8LAZpU9szJ4hGguCkJ7S53NI9V-1BIiTtz12H9fwlByzSL8MNr_l1cjx8QV369BY87sK-y-_fIMjgTBAqoBTqCkzgp2pX1j-BrebbKZQ_Oz1sbl7MiyBBcIY1YP0v1bo4MEgBRlhQFb86dM1pp1_EWst_4QWQsWdE6ZZkHQmk4xCXMc9kr_om3jckaoBr4a4gXuuFHxyx2LNkBxjRL2GFqAhC0-5ucxnFCorLBXPhMl6kyaUvS3Zskl"
+                  width={48}
+                  height={48}
                 />
                 <div>
                   <p className="font-bold text-gray-900 dark:text-white">ป้านิด</p>
@@ -301,13 +304,15 @@ export default function LandingPage() {
                 ))}
               </div>
               <p className="text-gray-700 dark:text-gray-300 text-lg font-medium leading-relaxed mb-8">
-                "ช่วยได้เยอะเลยครับ ปกติกะเอาเองตลอด พอมาคำนวณจริงถึงรู้ว่ากำไรหายไปไหน แนะนำเลยครับ"
+                &quot;ช่วยได้เยอะเลยครับ ปกติกะเอาเองตลอด พอมาคำนวณจริงถึงรู้ว่ากำไรหายไปไหน แนะนำเลยครับ&quot;
               </p>
               <div className="flex items-center gap-4">
-                <img
+                <Image
                   alt="Portrait of a middle-aged Thai man smiling"
                   className="w-12 h-12 rounded-full object-cover border-2 border-white dark:border-gray-700 shadow-sm"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgy5gp2Af8NhN1_khfbwnZBh4Yk66zgKA7dhRNt_vCQrXna_VuRKV4xFKF1VEKZQAPe5j4phxUcP-Q-5zoGfmohtakba72sqythRGGSQGcXtx621XnRN74ZdfmmiUxuZzPOwPpJlWsivx4zsAeTurCO5aFYmluUQn4TFErNB7nRbMqrxzcEFAtaHWQIAhACZUH3KxNEJUESqirUHYXIcn9t1-nQ7U1Y93C0pKLqFqUwuiuIH_tv4ZkEcSGSMkqr0bDpiDe_TzPd3WQ"
+                  width={48}
+                  height={48}
                 />
                 <div>
                   <p className="font-bold text-gray-900 dark:text-white">คุณสมชาย</p>
@@ -324,13 +329,15 @@ export default function LandingPage() {
                 <span className="material-symbols-outlined fill-current text-lg">star_half</span>
               </div>
               <p className="text-gray-700 dark:text-gray-300 text-lg font-medium leading-relaxed mb-8">
-                "ชอบที่ตัวหนังสือใหญ่ดีค่ะ อ่านง่าย สบายตา ไม่ซับซ้อน เหมาะกับคนรุ่นใหญ่แบบเราที่สายตาไม่ค่อยดี"
+                &quot;ชอบที่ตัวหนังสือใหญ่ดีค่ะ อ่านง่าย สบายตา ไม่ซับซ้อน เหมาะกับคนรุ่นใหญ่แบบเราที่สายตาไม่ค่อยดี&quot;
               </p>
               <div className="flex items-center gap-4">
-                <img
+                <Image
                   alt="Portrait of a Thai woman wearing glasses smiling"
                   className="w-12 h-12 rounded-full object-cover border-2 border-white dark:border-gray-700 shadow-sm"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjuHYs1SBDDcrsb61BTvMCqQmKRA8o72S-bbalvsnBh2sml_ghuxSgtK3bPU3FZS4EvUBk1fl0YebFMTWy0z7ebUPdFX9Sw6waJJEgjrLKVsQJSLyqtp5YkgQHGT-FsqaX2Cp5hefLLqGQAZ9lKTzHQFcJC86REeiHGqo5nU5Mr4cOcUuH2tDFVTUJ7ZN9S8tpPn2Hm8Hv2EpnDBMkzugiP2k-ejLPYWf0QYxCQcHdvaIcqiGpnpTOQG3rAO_tgVMPyu8wLnEry2vB"
+                  width={48}
+                  height={48}
                 />
                 <div>
                   <p className="font-bold text-gray-900 dark:text-white">พี่อ้อย</p>
@@ -349,7 +356,7 @@ export default function LandingPage() {
             <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
             <div className="absolute bottom-0 right-0 w-64 h-64 bg-black/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
             <div className="relative z-10">
-              <h2 className="text-4xl md:text-6xl font-black text-gray-900 mb-6 tracking-tight">หยุด "ขายดี จนเจ๊ง"</h2>
+              <h2 className="text-4xl md:text-6xl font-black text-gray-900 mb-6 tracking-tight">หยุด &quot;ขายดี จนเจ๊ง&quot;</h2>
               <p className="text-xl text-gray-800 font-medium mb-10 max-w-2xl mx-auto">
                 เริ่มต้นคำนวณต้นทุนอย่างถูกต้องวันนี้ เพื่อกำไรที่ยั่งยืนของร้านคุณ
                 <br className="hidden md:block"/>ใช้งานง่าย ฟรี ไม่มีข้อผูกมัด
