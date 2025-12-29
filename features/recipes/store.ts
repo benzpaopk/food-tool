@@ -118,13 +118,13 @@ export const useRecipeStore = create<RecipeState>()(
 
       removeRecipe: (id) => {
         set((state) => ({
-          recipes: state.recipes.filter((recipe: Recipe) => recipe.id !== id),
+          recipes: state.recipes.filter((recipe: any) => recipe.id !== id),
         }));
       },
 
       updateRecipe: (id, data) => {
         set((state) => {
-          const recipe = state.recipes.find((r) => r.id === id);
+          const recipe = state.recipes.find((r: Recipe) => r.id === id);
           if (!recipe) return state;
 
           // If items or sale price changed, recalculate costs
