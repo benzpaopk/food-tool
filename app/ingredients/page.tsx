@@ -218,7 +218,7 @@ export default function IngredientsPage() {
                                   <AlertDialogHeader>
                                     <AlertDialogTitle>Delete Ingredient</AlertDialogTitle>
                                     <AlertDialogDescription>
-                                      Are you sure you want to delete <span className="font-bold text-gray-900">"{ingredient.name}"</span>? 
+                                      Are you sure you want to delete <span className="font-bold text-gray-900">&quot;{ingredient.name}&quot;</span>? 
                                       <br/>This action cannot be undone.
                                     </AlertDialogDescription>
                                   </AlertDialogHeader>

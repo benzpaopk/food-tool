@@ -74,7 +74,7 @@ export default function FoodCostSummaryPage() {
                 <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-text-main dark:text-white mb-2">สรุปต้นทุนอาหาร</h1>
                 <div className="flex flex-wrap items-center gap-2 text-lg text-text-secondary dark:text-gray-300">
                   <span>ผลลัพธ์สำหรับ:</span>
-                  <span className="font-bold text-text-main dark:text-white bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-lg">"ข้าวกะเพราหมูสับ (สูตรพิเศษ)"</span>
+                  <span className="font-bold text-text-main dark:text-white bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-lg">&quot;ข้าวกะเพราหมูสับ (สูตรพิเศษ)&quot;</span>
                 </div>
               </div>
             </div>
@@ -157,7 +157,7 @@ export default function FoodCostSummaryPage() {
                     สุขภาพกำไร (Profit Health)
                   </h3>
                   <p className="text-text-secondary dark:text-gray-400 mt-1 max-w-xl">
-                    อัตรากำไรของคุณอยู่ที่ <strong className="text-primary dark:text-green-400">60%</strong> ซึ่งถือว่าอยู่ในเกณฑ์ <strong className="text-primary dark:text-green-400">"ดีมาก"</strong> สำหรับร้านอาหารประเภทจานเดียว
+                    อัตรากำไรของคุณอยู่ที่ <strong className="text-primary dark:text-green-400">60%</strong> ซึ่งถือว่าอยู่ในเกณฑ์ <strong className="text-primary dark:text-green-400">&quot;ดีมาก&quot;</strong> สำหรับร้านอาหารประเภทจานเดียว
                   </p>
                 </div>
               </div>
